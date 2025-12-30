@@ -2,15 +2,26 @@ package stream;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 public class StreamOperation {
 
 	public static void main(String[] args) {
-		List<Employee> emp=employeesList();
-		System.out.println("Object Created !!"+emp);
+		List<Employee> employees=employeesList();
+		//System.out.println("Object Created !!"+employees);
+		//Get All Employee Names as List
+		// Without Stream
+		List<String> empNames = new ArrayList<String>();
+		for(Employee em:employees) { 
+			empNames.add(em.getName());
+		}
+		System.out.println("Name :: "+empNames);
 		
+		//With Stream		
+		Stream<Employee>empStream=employees.stream();
+		List<String> allEmpNames =empStream.map(emp -> emp.getName()).toList();
 		
-		
+		System.out.println("Name :: "+allEmpNames);
 
 	}
 	private static List<Employee> employeesList(){
