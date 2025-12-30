@@ -1,7 +1,9 @@
 package stream;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 public class StreamOperation {
@@ -10,6 +12,22 @@ public class StreamOperation {
 		List<Employee> employees=employeesList(); 
 		fetchEmpName(employees);
 		fetchEmpAge(employees);
+		System.out.println("City Name Of Emp:: "+fetchEmpCity(employees));
+		System.out.println("Unique City Name Of Emp:: "+fetchUniqueEmpCity(employees));
+	}
+	
+	private static List<String> fetchEmpCity(List<Employee> employees ) {
+		List<String> ecity=employees.stream()
+				.map(emp -> emp.getCity())
+				.collect(Collectors.toList());
+		return ecity;
+	}
+	
+	private static List<String> fetchUniqueEmpCity(List<Employee> employees ) {
+		List<String> ecity=employees.stream()
+				.map(emp -> emp.getCity()).distinct()
+				.collect(Collectors.toList());
+		return ecity;
 	}
 	
 	private static void fetchEmpAge(List<Employee> employees ) {
@@ -41,25 +59,25 @@ public class StreamOperation {
 		List<Employee> empList= new ArrayList<>();
 		
 		empList.add(Employee.getBuild().setId(1).setName("One").setGender("Female").setAge(32).setDepartment("HR")
-				.setCity("Noida").setYearOfJoining(2011).setSalary(10000).build());
+				.setCity("Noida").setYearOfJoining(2011).setSalary(16000).build());
 		empList.add(Employee.getBuild().setId(2).setName("Two").setGender("Male").setAge(25).setDepartment("Sales")
-				.setCity("Noida").setYearOfJoining(2015).setSalary(10000).build());
+				.setCity("Gr.Noida").setYearOfJoining(2015).setSalary(10000).build());
 		empList.add(Employee.getBuild().setId(3).setName("Three").setGender("Male").setAge(29).setDepartment("Infrastructure")
-				.setCity("Noida").setYearOfJoining(2016).setSalary(10000).build());
+				.setCity("Agra").setYearOfJoining(2016).setSalary(15000).build());
 		empList.add(Employee.getBuild().setId(4).setName("Four").setGender("Female").setAge(28).setDepartment("Development")
-				.setCity("Noida").setYearOfJoining(2007).setSalary(10000).build());
+				.setCity("Mathura").setYearOfJoining(2007).setSalary(10000).build());
 		empList.add(Employee.getBuild().setId(5).setName("Five").setGender("Female").setAge(27).setDepartment("HR")
-				.setCity("Noida").setYearOfJoining(2013).setSalary(10000).build());
+				.setCity("Dwarka").setYearOfJoining(2013).setSalary(10000).build());
 		empList.add(Employee.getBuild().setId(6).setName("Six").setGender("Male").setAge(43).setDepartment("Security")
-				.setCity("Noida").setYearOfJoining(2008).setSalary(10000).build());
+				.setCity("Pune").setYearOfJoining(2008).setSalary(14000).build());
 		empList.add(Employee.getBuild().setId(7).setName("Seven").setGender("Male").setAge(35).setDepartment("Finance")
-				.setCity("Noida").setYearOfJoining(2010).setSalary(10000).build());
+				.setCity("Goa").setYearOfJoining(2010).setSalary(10000).build());
 		empList.add(Employee.getBuild().setId(8).setName("Eight").setGender("Male").setAge(31).setDepartment("Development")
-				.setCity("Noida").setYearOfJoining(2016).setSalary(10000).build());
+				.setCity("Kriti Nagar").setYearOfJoining(2016).setSalary(10000).build());
 		empList.add(Employee.getBuild().setId(9).setName("Nine").setGender("Female").setAge(24).setDepartment("Sales")
-				.setCity("Noida").setYearOfJoining(2001).setSalary(10000).build());
+				.setCity("Basti").setYearOfJoining(2001).setSalary(30000).build());
 		empList.add(Employee.getBuild().setId(10).setName("Ten").setGender("Female").setAge(25).setDepartment("Sales")
-				.setCity("Noida").setYearOfJoining(2009).setSalary(10000).build());
+				.setCity("Noida").setYearOfJoining(2009).setSalary(20000).build());
 		
 		return empList;
 	}
