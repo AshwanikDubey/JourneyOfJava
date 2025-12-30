@@ -7,22 +7,35 @@ import java.util.stream.Stream;
 public class StreamOperation {
 
 	public static void main(String[] args) {
-		List<Employee> employees=employeesList();
-		//System.out.println("Object Created !!"+employees);
-		//Get All Employee Names as List
-		// Without Stream
-		List<String> empNames = new ArrayList<String>();
-		for(Employee em:employees) { 
-			empNames.add(em.getName());
-		}
+		List<Employee> employees=employeesList(); 
+		fetchEmpName(employees);
+		fetchEmpAge(employees);
+	}
+	
+	private static void fetchEmpAge(List<Employee> employees ) {
+		//Fetch Employees with age > 25 
+		List<String> empNames=employees.stream()
+				.filter(emp -> emp.getAge()>25) //Get All Emp object with age > 25
+				.map(emp -> emp.getName()).toList(); // get name of emp with Emp object
 		System.out.println("Name :: "+empNames);
-		
-		//With Stream		
-		Stream<Employee>empStream=employees.stream();
-		List<String> allEmpNames =empStream.map(emp -> emp.getName()).toList();
-		
-		System.out.println("Name :: "+allEmpNames);
-
+	}
+	
+	
+	
+	private static void fetchEmpName(List<Employee> employees ) {
+		//Get All Employee Names as List
+				// Without Stream
+				List<String> empNames = new ArrayList<String>();
+				for(Employee em:employees) { 
+					empNames.add(em.getName());
+				}
+				System.out.println("Name :: "+empNames);
+				
+				//With Stream		
+				Stream<Employee>empStream=employees.stream();
+				List<String> allEmpNames =empStream.map(emp -> emp.getName()).toList();
+				
+				System.out.println("Name :: "+allEmpNames);
 	}
 	private static List<Employee> employeesList(){
 		List<Employee> empList= new ArrayList<>();
