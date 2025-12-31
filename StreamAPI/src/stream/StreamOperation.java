@@ -16,6 +16,51 @@ public class StreamOperation {
 		countEmp(employees);
 		firstThreeEmp(employees);
 		ignoreThreeEmp(employees);
+		verifyEmp(employees);
+		checkEmp(employees);
+		checkEmpjoin(employees);
+		checkEmpSalary(employees);
+	}
+	
+	private static void checkEmpSalary(List<Employee> employees ) {
+		//Check Every Employee salary above 10000
+		// noneMatch return true if no one match and false any one matching
+		boolean ans=employees.stream().noneMatch(emp -> emp.getSalary()<10000);
+		if(ans) {
+			System.out.println("Yes All Employee salary above 10000");
+		}else {
+			System.out.println("Not All Employee are salary above 10000");
+		} 
+	}
+	
+	private static void checkEmpjoin(List<Employee> employees ) {
+		//Check Employee are joined after 2000
+		boolean ans=employees.stream().allMatch(emp -> emp.getYearOfJoining()>2000);
+		if(ans) {
+			System.out.println("Yes All Employee are joined after 2000");
+		}else {
+			System.out.println("Not All Employee are joined after 2000");
+		} 
+	}
+	
+	private static void checkEmp(List<Employee> employees ) {
+		//Check if any Employee are joined before 2019
+		boolean ans=employees.stream().anyMatch(emp -> emp.getYearOfJoining()<2019);
+		if(ans) {
+			System.out.println("Yes Employee joined before 2019");
+		}else {
+			System.out.println("No Employee joined before 2019");
+		} 
+	}
+	
+	private static void verifyEmp(List<Employee> employees ) {
+		//verify any Employees below 18
+		boolean ans=employees.stream().anyMatch(emp -> emp.getAge()<18);
+		if(!ans) {
+			System.out.println("No Employees are present below 18 ");
+		}else {
+			System.out.println("Employees are present below 18 ");
+		} 
 	}
 	
 	private static void ignoreThreeEmp(List<Employee> employees ) {
@@ -58,9 +103,7 @@ public class StreamOperation {
 				.map(emp -> emp.getName()).toList(); // get name of emp with Emp object
 		System.out.println("Name :: "+empNames);
 	}
-	
-	
-	
+	  
 	private static void fetchEmpName(List<Employee> employees ) {
 		//Get All Employee Names as List
 				// Without Stream
