@@ -20,6 +20,28 @@ public class StreamOperation {
 		checkEmp(employees);
 		checkEmpjoin(employees);
 		checkEmpSalary(employees);
+		findMethods(employees);
+		sortingMethods(employees);
+		// (employees);
+		// (employees);
+	}
+	
+	private static void sortingMethods(List<Employee> employees ) { 
+		//Sorting the value in ascending Order
+		//result Sorted Emp : [Eight, Five, Four, Nine, One, Seven, Six, Ten, Three, Two]
+		List<String> ans= employees.stream().map(emp -> emp.getName()).sorted().toList();
+		System.out.println("Sorted Emp : "+ans);
+	}
+	private static void findMethods(List<Employee> employees ) { 
+		// findAny() :- get one value from out of all values
+		// findAny return option class value
+		Employee e= employees.stream().findAny().get();
+		System.out.println("Find Any Employee : "+e.getName());
+		
+		//findFirst() : return first value of the stream
+		Employee femp= employees.stream().findFirst().get();
+		System.out.println("First Employee : "+femp.getName());
+		
 	}
 	
 	private static void checkEmpSalary(List<Employee> employees ) {
