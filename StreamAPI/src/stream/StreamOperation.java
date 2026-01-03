@@ -31,10 +31,18 @@ public class StreamOperation {
 		//result Sorted Emp : [Eight, Five, Four, Nine, One, Seven, Six, Ten, Three, Two]
 		List<String> ans= employees.stream().map(emp -> emp.getName()).sorted().toList();
 		System.out.println("Sorted Emp : "+ans);
+		
+		//Sorting based on Salary
+		//Using Comparator (o1,o2)
+		 
+		 List<Employee> sortedemp=employees.stream().sorted((e1,e2)->{
+			return e1.getAge()-e2.getAge();
+		}).toList();
+		 
 	}
 	private static void findMethods(List<Employee> employees ) { 
 		// findAny() :- get one value from out of all values
-		// findAny return option class value
+		// findAny return option class value  
 		Employee e= employees.stream().findAny().get();
 		System.out.println("Find Any Employee : "+e.getName());
 		
