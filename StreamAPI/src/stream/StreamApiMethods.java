@@ -15,7 +15,9 @@ public class StreamApiMethods {
         //printSquareEvenNum(ans);
         //printFirstNumberGreaterthan10(ans);
 //        printCountGreaterthan10(ans);
-        printSum(ans);
+       // printSum(ans);
+//        printMaxNumber(ans);
+        printEvenNumberWithSquareAndThenSum(ans);
     }
     //Create Stream
     private static Stream<Integer> createStream(){
@@ -75,5 +77,18 @@ public class StreamApiMethods {
         Integer ans = val.reduce(0,(a,b) -> a+b);
         System.out.println("Ans "+ans);
     }
+    private static void printMaxNumber(Stream<Integer> val){
+        System.out.println("Max Number");
+//        Integer ans = val.reduce(0,(a,b) -> Integer.max(a,b));
+//        Integer ans = val.reduce(0, Integer::max);
+        Optional<Integer> ans = val.reduce(Integer::max);
+        System.out.println("Ans "+ans.get());
+    }
+    private static void printEvenNumberWithSquareAndThenSum(Stream<Integer> val){
+        Optional<Integer> ans = val.filter(x->x%2==0).map(x->x*x).reduce(Integer::sum);
+        System.out.println("Ans "+ans.get());
+    }
+
+
 
 }
